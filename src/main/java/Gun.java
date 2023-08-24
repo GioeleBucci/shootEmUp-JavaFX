@@ -7,4 +7,5 @@ public class Gun extends Rectangle {
     this.setX(player.x + player.getSprite().getWidth() / 2);
     this.setY(player.y + player.getSprite().getHeight() / 2);
   }
+  
 }

@@ -1,11 +1,18 @@
+import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 
-public class PlayerManager {
+public class InputManager {
 
   private Player player;
 
-  public PlayerManager(Player player) {
+  public InputManager(Scene scene, Player player) {
     this.player = player;
+    scene.setOnMouseMoved(event -> {
+      double mouseX = event.getX();
+      double mouseY = event.getY();
+
+      System.out.println("Mouse Position: " + mouseX + ", " + mouseY);
+    });
   }
 
   public void Move(KeyCode keyCode) {
