@@ -24,7 +24,7 @@ public class App extends Application {
 
     scene.setOnKeyPressed(event -> {
       playerManager.Move(event.getCode());
-      System.out.println("Key Pressed: " + event.getCode());
+      //System.out.println("Key Pressed: " + event.getCode());
     });
     //
 

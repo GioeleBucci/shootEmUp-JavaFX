@@ -1,41 +1,48 @@
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class Player extends Rectangle {
-  private double x;
-  private double y;
-  private double speed;
+public class Player extends Group {
+  public float x;
+  public float y;
+  private float speed;
+  private Gun weapon;
+  private Rectangle sprite;
 
-  public Player(int x, int y, double speed){
-    super(x,y,50,50);
+  public Player(int x, int y, float speed) {
     this.x = x;
     this.y = y;
-    this.speed = 5;
-    this.setFill(Color.BLUE);
+    this.speed = speed;
+
+    sprite = new Rectangle(x, y, 50, 50);
+    sprite.setFill(Color.BLUE);
+    weapon = new Gun(this);
+
+    this.getChildren().addAll(sprite, weapon);
+  }
+
+  public Rectangle getSprite(){
+    return this.sprite;
   }
 
   public void moveUp() {
-    y -= speed;
-    updatePosition();
+    updatePosition(0,-speed);
   }
 
   public void moveDown() {
-    y += speed;
-    updatePosition();
+    updatePosition(0,speed);
   }
 
   public void moveLeft() {
-    x -= speed;
-    updatePosition();
+    updatePosition(-speed,0);
   }
 
   public void moveRight() {
-    x += speed;
-    updatePosition();
+    updatePosition(speed,0);
   }
 
-  private void updatePosition() {
-    this.setX(x);
-    this.setY(y);
+  private void updatePosition(float x, float y) {
+    this.setTranslateX(this.getTranslateX() + x);
+    this.setTranslateY(this.getTranslateY() + y);
   }
 }
