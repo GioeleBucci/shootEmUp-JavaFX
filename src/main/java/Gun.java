@@ -1,11 +1,21 @@
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Rotate;
+import lombok.Getter;
 
-public class Gun extends Rectangle {
+public class Gun extends Group {
+
+  @Getter
+  private Rectangle sprite;
+
   public Gun(Player player) {
-    super(60, 10, Color.GREY);
-    this.setX(player.x + player.getSprite().getWidth() / 2);
-    this.setY(player.y + player.getSprite().getHeight() / 2);
+    sprite = new Rectangle(60, 10, Color.GREY);
+    this.getChildren().add(sprite);
+    //move the handle where the player is
+    this.setTranslateX(player.getX() + player.getSprite().getWidth() / 2);
+    this.setTranslateY(player.getY() + player.getSprite().getHeight() / 2);
+    this.sprite.setTranslateX(this.sprite.getTranslateX());
+    this.sprite.setTranslateY(this.sprite.getTranslateY());
   }
-  
 }

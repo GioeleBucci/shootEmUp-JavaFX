@@ -5,10 +5,10 @@ import javafx.scene.shape.Rectangle;
 import lombok.Getter;
 
 public class Player extends Group {
-  public float x;
-  public float y;
+  @Getter private float x;
+  @Getter private float y;
   private float speed;
-  @Getter private Gun weapon;
+  public Gun weapon;
   @Getter private Rectangle sprite;
 
   public Player(int x, int y, float speed) {
