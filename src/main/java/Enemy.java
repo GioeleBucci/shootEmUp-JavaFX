@@ -6,12 +6,17 @@ import lombok.Getter;
 
 public class Enemy extends Group implements IDamagable {
 
-  @SuppressWarnings("unused") private int maxHealth, currentHealth;
+  @SuppressWarnings("unused")
+  private int maxHealth, currentHealth;
 
   @Getter
   private Rectangle sprite;
 
   public Enemy(Point2D pos, int hp) {
+    
+    this.maxHealth = hp;
+    this.currentHealth = hp;
+
     sprite = new Rectangle(pos.getX(), pos.getY(), 50, 50);
     sprite.setFill(Color.RED);
     this.getChildren().add(sprite);
@@ -22,6 +27,7 @@ public class Enemy extends Group implements IDamagable {
 
   @Override
   public void takeDamage(int amount) {
+    System.out.println("hp: " + this.currentHealth);
     this.currentHealth -= amount;
     if (currentHealth <= 0) {
       die();

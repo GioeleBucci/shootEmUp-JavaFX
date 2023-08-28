@@ -28,7 +28,7 @@ public class App extends Application {
     });
 
     //spawn enemy
-    new Enemy(new Point2D(SCREEN_WIDTH / 3, SCREEN_HEIGHT / 3), 2);
+    new Enemy(new Point2D(SCREEN_WIDTH / 3, SCREEN_HEIGHT / 3), 20);
     //
 
     stage.show();
