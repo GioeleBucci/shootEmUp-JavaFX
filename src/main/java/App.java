@@ -6,18 +6,17 @@ import javafx.stage.Stage;
 public class App extends Application {
   public static final int SCREEN_WIDTH = 400;
   public static final int SCREEN_HEIGHT = 600;
-
+  public static final Group sceneRoot = new Group();
   private InputManager playerManager;
   private Player player;
 
   @Override
   public void start(Stage stage) {
-    Group root = new Group();
-    Scene scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
+    Scene scene = new Scene(sceneRoot, SCREEN_WIDTH, SCREEN_HEIGHT);
     stage.setScene(scene);
 
     player = new Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 5);
-    root.getChildren().add(player);
+    sceneRoot.getChildren().addAll(player);
 
     // game init
     playerManager = new InputManager(scene,player);

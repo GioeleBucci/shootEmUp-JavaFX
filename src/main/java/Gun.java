@@ -18,4 +18,8 @@ public class Gun extends Group {
     this.sprite.setTranslateX(this.sprite.getTranslateX());
     this.sprite.setTranslateY(this.sprite.getTranslateY());
   }
+  public void shoot(){
+    System.out.println("pew pew");
+    new Bullet(this.getLocalToSceneTransform().getTx(), this.getLocalToSceneTransform().getTy(), 1);
+  }
 }

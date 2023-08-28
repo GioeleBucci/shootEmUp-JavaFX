@@ -12,7 +12,7 @@ public class InputManager {
     this.player = player;
     Rotate rotation = new Rotate(0);
     player.weapon.getTransforms().add(rotation);
-    
+
     /*
      * MOVE GUN
      * The gun must be oriented in the direction of the mouse cursor.
@@ -22,9 +22,13 @@ public class InputManager {
       double xDist = event.getX() - player.getX();
       double yDist = event.getY() - player.getY();
       // calculate the angle between cursor and player
-      double angle = Math.toDegrees(Math.atan2(yDist,xDist));
+      double angle = Math.toDegrees(Math.atan2(yDist, xDist));
       System.out.println(angle);
       rotation.setAngle(angle);
+    });
+
+    scene.setOnMouseClicked(evemt -> {
+      player.weapon.shoot();
     });
   }
 
