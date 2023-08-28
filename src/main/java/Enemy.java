@@ -13,6 +13,8 @@ public class Enemy extends Group{
     sprite.setFill(Color.RED);
     this.getChildren().add(sprite);
     App.sceneRoot.getChildren().add(this);
+
+    System.out.println("enemy: " + this.sprite.getBoundsInLocal());
   }
 
 }
