@@ -6,7 +6,7 @@ import lombok.Getter;
 
 public class Enemy extends Group implements IDamagable {
 
-  private int maxHealth, currentHealth;
+  @SuppressWarnings("unused") private int maxHealth, currentHealth;
 
   @Getter
   private Rectangle sprite;

@@ -1,15 +1,9 @@
-import java.io.Console;
-
 import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
-import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
 public class Bullet extends Group {
