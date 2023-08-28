@@ -40,6 +40,8 @@ public class Player extends Group {
   }
 
   private void updatePosition(float x, float y) {
+    this.x += x;
+    this.y += y;
     this.setTranslateX(this.getTranslateX() + x);
     this.setTranslateY(this.getTranslateY() + y);
   }

@@ -12,7 +12,7 @@ public class Gun extends Group {
   public Gun(Player player) {
     sprite = new Rectangle(60, 10, Color.GREY);
     this.getChildren().add(sprite);
-    //move the handle where the player is
+    // move the handle where the player is
     this.setTranslateX(player.getX() + player.getSprite().getWidth() / 2);
     this.setTranslateY(player.getY() + player.getSprite().getHeight() / 2);
     this.sprite.setTranslateX(this.sprite.getTranslateX());
