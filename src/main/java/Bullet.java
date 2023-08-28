@@ -57,7 +57,10 @@ public class Bullet extends Group {
     for (Node obj : App.sceneRoot.getChildren()) {
       if (this != obj && !(obj instanceof Gun) && !(obj instanceof Player)) { // avoid checking collision on self
         if (this.getBoundsInLocal().intersects(obj.getBoundsInLocal())) {
-          //System.out.println("I collided with: " + obj);
+          // System.out.println("I collided with: " + obj);
+          if(obj instanceof IDamagable){
+            ((IDamagable)obj).takeDamage(5);
+          }
           return true;
         }
       }

@@ -4,7 +4,7 @@ import javafx.scene.shape.Rectangle;
 
 import lombok.Getter;
 
-public class Player extends Group {
+public class Player extends Group{
   @Getter private float x;
   @Getter private float y;
   private float speed;
