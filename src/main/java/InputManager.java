@@ -23,8 +23,9 @@ public class InputManager {
       double yDist = event.getY() - player.getY();
       // calculate the angle between cursor and player
       double angle = Math.toDegrees(Math.atan2(yDist, xDist));
-      System.out.println(angle);
+      //System.out.println(angle);
       rotation.setAngle(angle);
+      player.weapon.angle = angle;
     });
 
     scene.setOnMouseClicked(evemt -> {

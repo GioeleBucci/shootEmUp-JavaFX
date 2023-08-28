@@ -1,3 +1,4 @@
+import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -8,6 +9,7 @@ public class Gun extends Group {
 
   @Getter
   private Rectangle sprite;
+  public double angle = 0;
 
   public Gun(Player player) {
     sprite = new Rectangle(60, 10, Color.GREY);
@@ -18,8 +20,9 @@ public class Gun extends Group {
     this.sprite.setTranslateX(this.sprite.getTranslateX());
     this.sprite.setTranslateY(this.sprite.getTranslateY());
   }
-  public void shoot(){
+
+  public void shoot() {
     System.out.println("pew pew");
-    new Bullet(this.getLocalToSceneTransform().getTx(), this.getLocalToSceneTransform().getTy(), 1);
+    new Bullet(this.getLocalToSceneTransform().getTx(), this.getLocalToSceneTransform().getTy(), this.angle, 1);
   }
 }

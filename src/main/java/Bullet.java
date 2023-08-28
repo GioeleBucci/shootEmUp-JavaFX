@@ -1,5 +1,6 @@
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -7,17 +8,21 @@ import javafx.util.Duration;
 
 public class Bullet extends Group {
   private Circle sprite;
+  private float speed = 500;
 
-  public Bullet(double xPos, double yPos, float lifeTime) {
+  public Bullet(double xPos, double yPos, double angle, float lifeTime) {
     sprite = new Circle(xPos, yPos, 10, Color.BLACK);
     this.getChildren().add(sprite);
-    // Schedule bullet removal
-    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(lifeTime), event -> {
+
+    TranslateTransition moveTransition = new TranslateTransition(Duration.seconds(lifeTime), sprite);
+    moveTransition.setByX(speed * Math.cos(Math.toRadians(angle)));
+    moveTransition.setByY(speed * Math.sin(Math.toRadians(angle)));
+    moveTransition.setOnFinished(event -> {
       this.destroy();
-    }));
-    timeline.setCycleCount(1);
+    });
+
     App.sceneRoot.getChildren().add(this);
-    timeline.play();
+    moveTransition.play();
   }
 
   private void destroy() {
