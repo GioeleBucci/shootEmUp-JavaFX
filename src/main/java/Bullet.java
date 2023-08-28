@@ -10,14 +10,16 @@ public class Bullet extends Group {
   private Circle sprite;
   private float speed = 500;
   private float lifeTime;
+  private int damage;
 
   //timer variables
   private long lastCollisionCheckTime = 0;
   private long collisionCheckInterval = 100; // in milliseconds
 
-  public Bullet(double xPos, double yPos, double angle, float lifeTime) {
+  public Bullet(double xPos, double yPos, double angle, int damage, float lifeTime) {
 
     this.lifeTime = lifeTime;
+    this.damage = damage;
 
     sprite = new Circle(xPos, yPos, 10, Color.BLACK);
     this.getChildren().add(sprite);
@@ -65,7 +67,7 @@ public class Bullet extends Group {
         if (this.getBoundsInLocal().intersects(obj.getBoundsInLocal())) {
           // System.out.println("I collided with: " + obj);
           if (obj instanceof IDamagable) {
-            ((IDamagable) obj).takeDamage(1);
+            ((IDamagable) obj).takeDamage(this.damage);
           }
           return true;
         }

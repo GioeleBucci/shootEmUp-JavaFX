@@ -10,16 +10,16 @@ public class Gun extends Group {
   public double angle = 0;
 
   public Gun(Player player) {
-    sprite = new Rectangle(60, 10, Color.GREY);
+    sprite = new Rectangle(60, 20, Color.GREY);
     this.getChildren().add(sprite);
     // move the handle where the player is
-    this.setTranslateX(player.getX() + player.getSprite().getWidth() / 2);
-    this.setTranslateY(player.getY() + player.getSprite().getHeight() / 2);
+    this.setTranslateX(player.getX() + player.getSprite().getWidth() / 2 - this.sprite.getWidth() / 2);
+    this.setTranslateY(player.getY() + player.getSprite().getHeight() / 2 - this.sprite.getHeight() / 2);
     this.sprite.setTranslateX(this.sprite.getTranslateX());
     this.sprite.setTranslateY(this.sprite.getTranslateY());
   }
 
   public void shoot() {
-    new Bullet(this.getLocalToSceneTransform().getTx(), this.getLocalToSceneTransform().getTy(), this.angle, 1);
+    new Bullet(this.getLocalToSceneTransform().getTx(), this.getLocalToSceneTransform().getTy(), this.angle, 1, 1);
   }
 }

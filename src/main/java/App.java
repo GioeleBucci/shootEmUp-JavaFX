@@ -15,6 +15,7 @@ public class App extends Application {
   public void start(Stage stage) {
     Scene scene = new Scene(sceneRoot, SCREEN_WIDTH, SCREEN_HEIGHT);
     stage.setScene(scene);
+    stage.setResizable(false);
 
     player = new Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 5);
     sceneRoot.getChildren().addAll(player);
@@ -28,9 +29,9 @@ public class App extends Application {
     });
 
     //spawn enemy
-    new Enemy(new Point2D(SCREEN_WIDTH / 3, SCREEN_HEIGHT / 3), 20);
+    new Enemy(new Point2D(SCREEN_WIDTH / 3, SCREEN_HEIGHT / 3), 2);
     //
-
+    new WaveSpawner(30, 2);
     stage.show();
   }
 
