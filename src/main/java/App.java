@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -25,6 +26,9 @@ public class App extends Application {
       playerManager.Move(event.getCode());
       // System.out.println("Key Pressed: " + event.getCode());
     });
+
+    //spawn enemy
+    Enemy enemy = new Enemy(new Point2D(SCREEN_WIDTH / 3, SCREEN_HEIGHT / 3), 2);
     //
 
     stage.show();

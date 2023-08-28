@@ -26,7 +26,6 @@ public class Bullet extends Group {
   }
 
   private void destroy() {
-    System.out.println("bullet destroyed");
     App.sceneRoot.getChildren().remove(this);
   }
 }

@@ -22,7 +22,6 @@ public class Gun extends Group {
   }
 
   public void shoot() {
-    System.out.println("pew pew");
     new Bullet(this.getLocalToSceneTransform().getTx(), this.getLocalToSceneTransform().getTy(), this.angle, 1);
   }
 }
