@@ -4,12 +4,18 @@ import javafx.scene.shape.Rectangle;
 
 import lombok.Getter;
 
-public class Player extends Group{
-  @Getter private float x;
-  @Getter private float y;
-  @Getter private float speed;
+public class Player extends Group implements IDamagable {
+  @Getter
+  private float x;
+  @Getter
+  private float y;
+  @Getter
+  private float speed;
+  private int maxHealth = 3;
+  private int currentHealth = maxHealth;
   public Gun weapon;
-  @Getter private Rectangle sprite;
+  @Getter
+  private Rectangle sprite;
 
   public Player(int x, int y, float speed) {
     this.x = x;
@@ -44,5 +50,25 @@ public class Player extends Group{
     this.y += y;
     this.setTranslateX(this.getTranslateX() + x);
     this.setTranslateY(this.getTranslateY() + y);
+  }
+
+  @Override
+  public void takeDamage(int amount) {
+    currentHealth -= amount;
+    if (currentHealth <= 0) {
+      die();
+    }
+  }
+
+  @Override
+  public int getCurrentHealth() {
+    return this.currentHealth;
+  }
+
+  @Override
+  public void die() {
+    System.out.println("you die!");
+    this.sprite.setFill(Color.BLACK);
+    javafx.application.Platform.exit(); //terminate the program
   }
 }
