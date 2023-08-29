@@ -1,13 +1,8 @@
 import java.util.Random;
 
 import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.util.Duration;
 
 public class WaveSpawner extends Group {
 

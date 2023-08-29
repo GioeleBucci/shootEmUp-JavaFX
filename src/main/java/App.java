@@ -8,6 +8,7 @@ public class App extends Application {
   public static final int SCREEN_WIDTH = 400;
   public static final int SCREEN_HEIGHT = 600;
   public static final Group sceneRoot = new Group();
+  @SuppressWarnings("unused")
   private InputManager playerManager;
   private Player player;
 
@@ -21,14 +22,9 @@ public class App extends Application {
     sceneRoot.getChildren().addAll(player);
 
     // game init
-    playerManager = new InputManager(scene,player);
+    playerManager = new InputManager(scene, player);
 
-    scene.setOnKeyPressed(event -> {
-      playerManager.Move(event.getCode());
-      // System.out.println("Key Pressed: " + event.getCode());
-    });
-
-    //spawn enemy
+    // spawn enemy
     new Enemy(new Point2D(SCREEN_WIDTH / 3, SCREEN_HEIGHT / 3), 2);
     //
     new WaveSpawner(30, 2);

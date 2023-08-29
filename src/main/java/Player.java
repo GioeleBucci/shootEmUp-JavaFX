@@ -7,7 +7,7 @@ import lombok.Getter;
 public class Player extends Group{
   @Getter private float x;
   @Getter private float y;
-  private float speed;
+  @Getter private float speed;
   public Gun weapon;
   @Getter private Rectangle sprite;
 
