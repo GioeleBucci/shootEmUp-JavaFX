@@ -37,7 +37,6 @@ public class Enemy_Shooter extends Enemy {
     double angle = calculateAngleToTarget();
     Bullet emenyBullet = new Bullet(this.getLayoutBounds().getCenterX(), this.getLayoutBounds().getCenterY(), angle,
         this.damage, 1, false);
-    emenyBullet.getSprite().setFill(Color.GREEN);
   }
 
 }

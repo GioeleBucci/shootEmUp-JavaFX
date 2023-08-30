@@ -20,6 +20,7 @@ public class Gun extends Group {
   }
 
   public void shoot() {
-    new Bullet(this.getLocalToSceneTransform().getTx(), this.getLocalToSceneTransform().getTy(), this.angle, 1, 1, true);
+    new Bullet(this.getLocalToSceneTransform().getTx(), this.getLocalToSceneTransform().getTy(), this.angle, 1, 1,
+        true);
   }
 }

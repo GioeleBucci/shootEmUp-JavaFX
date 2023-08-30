@@ -8,8 +8,11 @@ import javafx.util.Duration;
 import lombok.Getter;
 
 public class Bullet extends Group {
-  @Getter
-  private Circle sprite;
+  
+  public static Color FIRENDLY_BULLET = Color.YELLOW;
+  public static Color ENEMY_BULLET = Color.DARKRED;
+
+  @Getter private Circle sprite;
   private float speed = 500;
   private float lifeTime;
   private int damage;
@@ -25,7 +28,7 @@ public class Bullet extends Group {
     this.damage = damage;
     this.isFriendly = isFriendly;
 
-    sprite = new Circle(xPos, yPos, 10, Color.BLACK);
+    sprite = new Circle(xPos, yPos, 10, isFriendly ? FIRENDLY_BULLET : ENEMY_BULLET);
     this.getChildren().add(sprite);
     App.sceneRoot.getChildren().add(this);
 
