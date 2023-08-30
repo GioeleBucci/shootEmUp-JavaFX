@@ -1,7 +1,10 @@
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
-
+import javafx.util.Duration;
 import lombok.Getter;
 
 public class Player extends Group implements IDamagable {
@@ -54,11 +57,32 @@ public class Player extends Group implements IDamagable {
 
   @Override
   public void takeDamage(int amount) {
+
+    damageFlickerAnim();
+
     currentHealth -= amount;
     System.out.println("You took " + amount + " damage");
     if (currentHealth <= 0) {
       die();
     }
+  }
+
+  private void damageFlickerAnim() {
+    Paint originalColor = sprite.getFill();
+    Paint flickerColor = Color.GREY;
+
+    Timeline timeline = new Timeline(
+        new KeyFrame(Duration.millis(200), event -> {
+          if (sprite.getFill() == originalColor) {
+            sprite.setFill(flickerColor);
+          } else {
+            sprite.setFill(originalColor);
+          }
+        }));
+
+    timeline.setCycleCount(3);
+    timeline.play();
+    timeline.setOnFinished(event -> sprite.setFill(originalColor)); // Restore original color after animation
   }
 
   @Override
