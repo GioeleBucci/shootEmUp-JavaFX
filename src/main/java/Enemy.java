@@ -22,12 +22,12 @@ public class Enemy extends Group implements IDamagable {
     this.getChildren().add(sprite);
     App.sceneRoot.getChildren().add(this);
 
-    System.out.println("enemy: " + this.sprite.getBoundsInLocal());
+    //System.out.println("enemy: " + this.sprite.getBoundsInLocal());
   }
 
   @Override
   public void takeDamage(int amount) {
-    System.out.println("hp: " + this.currentHealth);
+    //System.out.println("hp: " + this.currentHealth);
     this.currentHealth -= amount;
     if (currentHealth <= 0) {
       die();

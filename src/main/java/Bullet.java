@@ -5,9 +5,10 @@ import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
+import lombok.Getter;
 
 public class Bullet extends Group {
-  private Circle sprite;
+  @Getter private Circle sprite;
   private float speed = 500;
   private float lifeTime;
   private int damage;

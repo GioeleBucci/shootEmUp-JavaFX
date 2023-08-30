@@ -28,6 +28,8 @@ public class App extends Application {
     new Enemy(new Point2D(SCREEN_WIDTH / 3, SCREEN_HEIGHT / 3), 2);
     //
     new WaveSpawner(30, 2);
+
+    new Enemy_Shooter(new Point2D(SCREEN_WIDTH / 2 + 100, SCREEN_HEIGHT / 2 + 100), 10, player);
     stage.show();
   }
 

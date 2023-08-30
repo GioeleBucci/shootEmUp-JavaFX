@@ -55,6 +55,7 @@ public class Player extends Group implements IDamagable {
   @Override
   public void takeDamage(int amount) {
     currentHealth -= amount;
+    System.out.println("You took " + amount + " damage");
     if (currentHealth <= 0) {
       die();
     }
@@ -69,6 +70,6 @@ public class Player extends Group implements IDamagable {
   public void die() {
     System.out.println("you die!");
     this.sprite.setFill(Color.BLACK);
-    javafx.application.Platform.exit(); //terminate the program
+    javafx.application.Platform.exit(); // terminate the program
   }
 }

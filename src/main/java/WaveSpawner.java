@@ -35,7 +35,6 @@ public class WaveSpawner extends Group {
 
           lastCollisionCheckTime = currentTime;
 
-          System.out.println("spawned an enemy");
           spawnEnemy();
           spawned++;
 
