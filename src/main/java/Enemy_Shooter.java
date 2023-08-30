@@ -1,3 +1,4 @@
+import javafx.animation.AnimationTimer;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -5,9 +6,12 @@ import javafx.scene.shape.Shape;
 
 public class Enemy_Shooter extends Enemy {
 
-  /** Seconds between each shot */
-  private int fireRate;
-  private int damage = 0; //TODO
+  /** Milliseconds between each shot */
+  private long fireRate = 3000;
+  private int damage = 0; // TODO change damage to 1
+
+  // timer variables
+  private long last = 0;
 
   private Player target;
 
@@ -16,9 +20,21 @@ public class Enemy_Shooter extends Enemy {
     this.getSprite().setFill(Color.DARKRED);
     this.target = target;
 
-    App.sceneRoot.setOnMouseClicked(event -> {
-      shoot();
-    });
+    init();
+  }
+
+  private void init() {
+    AnimationTimer anim = new AnimationTimer() {
+      @Override
+      public void handle(long now) {
+        long current = System.currentTimeMillis();
+        if (current - last >= fireRate){
+          last = current;
+          shoot();
+        }
+      }
+    };
+    anim.start();
   }
 
   private double calculateAngleToTarget() {
