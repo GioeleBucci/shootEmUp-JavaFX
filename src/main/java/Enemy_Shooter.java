@@ -9,22 +9,22 @@ public class Enemy_Shooter extends Enemy {
   private int fireRate;
   private int damage = 0; //TODO
 
-  private Group target;
+  private Player target;
 
-  public Enemy_Shooter(Point2D pos, int hp, Group target) {
+  public Enemy_Shooter(Point2D pos, int hp, Player target) {
     super(pos, hp);
     this.getSprite().setFill(Color.DARKRED);
     this.target = target;
 
     App.sceneRoot.setOnMouseClicked(event -> {
-      System.out.println("pwe pwe");
       shoot();
     });
   }
 
   private double calculateAngleToTarget() {
-    double xDist = this.getLayoutBounds().getCenterX() - target.getLayoutBounds().getCenterX();
-    double yDist = this.getLayoutBounds().getCenterY() - target.getLayoutBounds().getCenterY();
+    double xDist = target.getX() - this.getLayoutBounds().getCenterX();
+    double yDist = target.getY() - this.getLayoutBounds().getCenterY();
+    System.out.println("x:" + target.getX() + "  y:" + target.getY());
     // calculate the angle between cursor and player
     double angle = Math.toDegrees(Math.atan2(yDist, xDist));
     return angle;
@@ -36,7 +36,7 @@ public class Enemy_Shooter extends Enemy {
     }
     double angle = calculateAngleToTarget();
     Bullet emenyBullet = new Bullet(this.getLayoutBounds().getCenterX(), this.getLayoutBounds().getCenterY(), angle,
-        this.damage, 1);
+        this.damage, 1, false);
     emenyBullet.getSprite().setFill(Color.GREEN);
   }
 

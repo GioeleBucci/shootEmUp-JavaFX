@@ -8,19 +8,22 @@ import javafx.util.Duration;
 import lombok.Getter;
 
 public class Bullet extends Group {
-  @Getter private Circle sprite;
+  @Getter
+  private Circle sprite;
   private float speed = 500;
   private float lifeTime;
   private int damage;
+  private boolean isFriendly;
 
-  //timer variables
+  // timer variables
   private long lastCollisionCheckTime = 0;
   private long collisionCheckInterval = 100; // in milliseconds
 
-  public Bullet(double xPos, double yPos, double angle, int damage, float lifeTime) {
+  public Bullet(double xPos, double yPos, double angle, int damage, float lifeTime, boolean isFriendly) {
 
     this.lifeTime = lifeTime;
     this.damage = damage;
+    this.isFriendly = isFriendly;
 
     sprite = new Circle(xPos, yPos, 10, Color.BLACK);
     this.getChildren().add(sprite);
@@ -30,7 +33,7 @@ public class Bullet extends Group {
   }
 
   private void instantiate(double angle) {
-    
+
     // move the bullet
     TranslateTransition moveTransition = new TranslateTransition(Duration.seconds(lifeTime), sprite);
     moveTransition.setByX(speed * Math.cos(Math.toRadians(angle)));
@@ -64,13 +67,17 @@ public class Bullet extends Group {
 
   private boolean isCollision() {
     for (Node obj : App.sceneRoot.getChildren()) {
-      if (this != obj && !(obj instanceof Gun) && !(obj instanceof Player)) { // avoid checking collision on self
-        if (this.getBoundsInLocal().intersects(obj.getBoundsInLocal())) {
-          // System.out.println("I collided with: " + obj);
-          if (obj instanceof IDamagable) {
-            ((IDamagable) obj).takeDamage(this.damage);
+      if (this != obj && !(obj instanceof Gun)) { // avoid checking collision on self or gun
+        // check if friendly bullet collides with player or enemy bullet collides with
+        // enemy
+        if ((this.isFriendly && !(obj instanceof Player)) || (!this.isFriendly && !(obj instanceof Enemy))) {
+          if (this.getBoundsInLocal().intersects(obj.getBoundsInLocal())) {
+            // System.out.println("I collided with: " + obj);
+            if (obj instanceof IDamagable) {
+              ((IDamagable) obj).takeDamage(this.damage);
+            }
+            return true;
           }
-          return true;
         }
       }
     }
